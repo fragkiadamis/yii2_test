@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Estate */
 
-$this->title = $model->id;
+$this->title = "Estate " . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Estates', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -30,11 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
+            'client.firstName',
+            'client.lastName',
             'size',
+            'area.name',
+            'landType.name',
             'notes',
-            'area_id',
-            'client_id',
-            'land_type_id',
         ],
     ]) ?>
 

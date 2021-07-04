@@ -13,7 +13,6 @@ use Yii;
  * @property float $amount
  * @property int $state
  *
- * @property Landtype[] $landtypes
  * @property Transaction[] $transactions
  */
 class Chargetype extends \yii\db\ActiveRecord
@@ -52,16 +51,6 @@ class Chargetype extends \yii\db\ActiveRecord
             'amount' => 'Amount',
             'state' => 'State',
         ];
-    }
-
-    /**
-     * Gets query for [[Landtypes]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getLandtypes()
-    {
-        return $this->hasMany(Landtype::className(), ['chargetype_id' => 'id']);
     }
 
     /**

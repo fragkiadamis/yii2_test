@@ -70,8 +70,26 @@ class EstateController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $clients = Client::find()
+            ->select(['firstName'])
+            ->indexBy('id')
+            ->column();
+
+        $landTypes = Landtype::find()
+            ->select(['name'])
+            ->indexBy('id')
+            ->column();
+
+        $areas = Area::find()
+            ->select(['name'])
+            ->indexBy('id')
+            ->column();
+
         return $this->render('create', [
             'model' => $model,
+            'clients' => $clients,
+            'landTypes' => $landTypes,
+            'areas' => $areas
         ]);
     }
 
@@ -119,6 +137,9 @@ class EstateController extends Controller
     protected function findModel($id)
     {
         if (($model = Estate::findOne($id)) !== null) {
+            $model->getClient();
+            $model->getArea();
+            $model->getLandType();
             return $model;
         }
 

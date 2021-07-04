@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'notes')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'chargetype_id')->textInput() ?>
+    <?= $form->field($model, 'charge')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

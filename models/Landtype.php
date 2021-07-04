@@ -10,10 +10,9 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property string|null $notes
- * @property int $chargetype_id
+ * @property float $charge
  *
  * @property Estate[] $estates
- * @property Chargetype $chargetype
  */
 class Landtype extends \yii\db\ActiveRecord
 {
@@ -31,11 +30,10 @@ class Landtype extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'chargetype_id'], 'required'],
-            [['chargetype_id'], 'integer'],
+            [['name', 'charge'], 'required'],
+            [['charge'], 'number'],
             [['name'], 'string', 'max' => 45],
             [['notes'], 'string', 'max' => 255],
-            [['chargetype_id'], 'exist', 'skipOnError' => true, 'targetClass' => Chargetype::className(), 'targetAttribute' => ['chargetype_id' => 'id']],
         ];
     }
 
@@ -46,9 +44,9 @@ class Landtype extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Type',
             'notes' => 'Notes',
-            'chargetype_id' => 'Chargetype ID',
+            'charge' => 'Charge',
         ];
     }
 
@@ -60,15 +58,5 @@ class Landtype extends \yii\db\ActiveRecord
     public function getEstates()
     {
         return $this->hasMany(Estate::className(), ['land_type_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Chargetype]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getChargetype()
-    {
-        return $this->hasOne(Chargetype::className(), ['id' => 'chargetype_id']);
     }
 }

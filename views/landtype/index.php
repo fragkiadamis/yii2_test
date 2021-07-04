@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\LandtypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Landtypes';
+$this->title = 'Land Types';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="landtype-index">
@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'notes',
-            'chargetype_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

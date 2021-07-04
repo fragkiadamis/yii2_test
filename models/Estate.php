@@ -53,9 +53,9 @@ class Estate extends \yii\db\ActiveRecord
             'id' => 'ID',
             'size' => 'Size',
             'notes' => 'Notes',
-            'area_id' => 'Area ID',
-            'client_id' => 'Client ID',
-            'land_type_id' => 'Land Type ID',
+            'area_id' => 'Area',
+            'client_id' => 'Client',
+            'land_type_id' => 'Land Type',
         ];
     }
 

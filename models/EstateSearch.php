@@ -41,7 +41,7 @@ class EstateSearch extends Estate
      */
     public function search($params)
     {
-        $query = Estate::find();
+        $query = Estate::find()->with(['client', 'landType', 'area']);
 
         // add conditions that should always apply here
 

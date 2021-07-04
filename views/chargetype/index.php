@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ChargetypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Chargetypes';
+$this->title = 'Charge Types';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chargetype-index">

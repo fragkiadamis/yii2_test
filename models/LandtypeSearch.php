@@ -17,8 +17,9 @@ class LandtypeSearch extends Landtype
     public function rules()
     {
         return [
-            [['id', 'chargetype_id'], 'integer'],
+            [['id'], 'integer'],
             [['name', 'notes'], 'safe'],
+            [['charge'], 'number'],
         ];
     }
 
@@ -59,7 +60,7 @@ class LandtypeSearch extends Landtype
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'chargetype_id' => $this->chargetype_id,
+            'charge' => $this->charge,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
