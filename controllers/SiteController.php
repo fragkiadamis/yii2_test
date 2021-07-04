@@ -7,7 +7,6 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\RegisterClientForm;
 
 class SiteController extends Controller
 {
@@ -27,13 +26,7 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+            ]
         ];
     }
 
@@ -61,17 +54,5 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
-    }
-
-    public function actionSignup()
-    {
-        echo 'test';
-        $model = new RegisterClientForm();
-
-        if($model->load(Yii::$app->request->post()) && $model->registerClient()) {
-            return $this->redirect(Yii::$app->homeUrl);
-        }
-
-        return $this->render('registerClient', ['model' => $model]);
     }
 }
