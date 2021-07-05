@@ -16,12 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'notes')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'state')->textInput() ?>
-
     <?= $form->field($model, 'state')->dropdownList(
         [
-            0 => 'Inactive',
-            1 => 'Active'
+            'active' => 'Ενεργό',
+            'inactive' => 'Ανενεργό'
         ],
         ['prompt'=>'Select State']
     ) ?>

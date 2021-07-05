@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'size') ?>
+		
+    <?= $form->field($model, 'value') ?> 
 
     <?= $form->field($model, 'notes') ?>
 

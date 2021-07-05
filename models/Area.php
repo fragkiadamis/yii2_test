@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property string|null $notes
- * @property int $state
+ * @property string $state
  *
  * @property Estate[] $estates
  */
@@ -31,9 +31,9 @@ class Area extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'state'], 'required'],
-            [['state'], 'integer'],
             [['name'], 'string', 'max' => 45],
             [['notes'], 'string', 'max' => 255],
+            [['state'], 'string', 'max' => 15],
         ];
     }
 
@@ -44,7 +44,7 @@ class Area extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Area',
+            'name' => 'Area Name',
             'notes' => 'Notes',
             'state' => 'State',
         ];

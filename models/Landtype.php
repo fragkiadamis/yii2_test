@@ -11,6 +11,7 @@ use Yii;
  * @property string $name
  * @property string|null $notes
  * @property float $charge
+ * @property string $state
  *
  * @property Estate[] $estates
  */
@@ -30,10 +31,11 @@ class Landtype extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'charge'], 'required'],
+            [['name', 'charge', 'state'], 'required'],
             [['charge'], 'number'],
             [['name'], 'string', 'max' => 45],
             [['notes'], 'string', 'max' => 255],
+            [['state'], 'string', 'max' => 15],
         ];
     }
 
@@ -44,9 +46,10 @@ class Landtype extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Type',
+            'name' => 'Land Type Name',
             'notes' => 'Notes',
             'charge' => 'Charge',
+            'state' => 'State',
         ];
     }
 

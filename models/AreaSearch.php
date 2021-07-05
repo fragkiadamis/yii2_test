@@ -17,8 +17,8 @@ class AreaSearch extends Area
     public function rules()
     {
         return [
-            [['id', 'state'], 'integer'],
-            [['name', 'notes'], 'safe'],
+            [['id'], 'integer'],
+            [['name', 'notes', 'state'], 'safe'],
         ];
     }
 
@@ -59,11 +59,11 @@ class AreaSearch extends Area
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'state' => $this->state,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'notes', $this->notes]);
+            ->andFilterWhere(['like', 'notes', $this->notes])
+            ->andFilterWhere(['like', 'state', $this->state]);
 
         return $dataProvider;
     }

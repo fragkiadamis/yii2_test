@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\LandtypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Land Types';
+$this->title = 'Land Τypes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="landtype-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Landtype', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Land Τype', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
+            'state',
             'notes',
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -77,7 +77,8 @@ class LandtypeController extends Controller
 
     /**
      * Updates an existing Landtype model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * If update is successful, the value of the estates will be updated
+     * and the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -87,6 +88,12 @@ class LandtypeController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $estates = $model->getEstates()->all();
+            foreach ($estates as $estate) {
+                $estate->calculateValue($estate);
+                $estate->save();
+            }
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

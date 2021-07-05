@@ -53,8 +53,8 @@ class Transaction extends \yii\db\ActiveRecord
             'amount' => 'Amount',
             'receiptNumber' => 'Receipt Number',
             'transaction_date' => 'Transaction Date',
-            'client_id' => 'Client ID',
-            'charge_type_id' => 'Charge Type ID',
+            'client_id' => 'Client',
+            'charge_type_id' => 'Charge Type',
         ];
     }
 

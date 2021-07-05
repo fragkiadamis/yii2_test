@@ -18,7 +18,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'amount')->textInput() ?>
 
-    <?= $form->field($model, 'state')->textInput() ?>
+    <?= $form->field($model, 'state')->dropdownList(
+        [
+            'active' => 'Ενεργό',
+            'inactive' => 'Ανενεργό'
+        ],
+        ['prompt'=>'Select State']
+    ) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

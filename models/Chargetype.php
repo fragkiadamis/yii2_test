@@ -11,7 +11,7 @@ use Yii;
  * @property string $name
  * @property string|null $notes
  * @property float $amount
- * @property int $state
+ * @property string $state
  *
  * @property Transaction[] $transactions
  */
@@ -33,9 +33,9 @@ class Chargetype extends \yii\db\ActiveRecord
         return [
             [['name', 'amount', 'state'], 'required'],
             [['amount'], 'number'],
-            [['state'], 'integer'],
             [['name'], 'string', 'max' => 45],
             [['notes'], 'string', 'max' => 255],
+            [['state'], 'string', 'max' => 15],
         ];
     }
 
@@ -46,7 +46,7 @@ class Chargetype extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Charge Type Name',
             'notes' => 'Notes',
             'amount' => 'Amount',
             'state' => 'State',

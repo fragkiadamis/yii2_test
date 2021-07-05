@@ -18,7 +18,7 @@ class EstateSearch extends Estate
     {
         return [
             [['id', 'area_id', 'client_id', 'land_type_id'], 'integer'],
-            [['size'], 'number'],
+            [['size', 'value'], 'number'],
             [['notes'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class EstateSearch extends Estate
         $query->andFilterWhere([
             'id' => $this->id,
             'size' => $this->size,
+            'value' => $this->value,
             'area_id' => $this->area_id,
             'client_id' => $this->client_id,
             'land_type_id' => $this->land_type_id,

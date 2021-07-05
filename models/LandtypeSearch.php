@@ -18,7 +18,7 @@ class LandtypeSearch extends Landtype
     {
         return [
             [['id'], 'integer'],
-            [['name', 'notes'], 'safe'],
+            [['name', 'notes', 'state'], 'safe'],
             [['charge'], 'number'],
         ];
     }
@@ -64,7 +64,8 @@ class LandtypeSearch extends Landtype
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'notes', $this->notes]);
+            ->andFilterWhere(['like', 'notes', $this->notes])
+            ->andFilterWhere(['like', 'state', $this->state]);
 
         return $dataProvider;
     }

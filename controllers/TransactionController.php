@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Transaction;
 use app\models\TransactionSearch;
+use app\models\Client;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -70,8 +71,14 @@ class TransactionController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $clients = Client::find()
+            ->select(['firstName'])
+            ->indexBy('id')
+            ->column();
+
         return $this->render('create', [
             'model' => $model,
+            'clients' => $clients,
         ]);
     }
 

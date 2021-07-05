@@ -5,6 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\Estate;
 use app\models\EstateSearch;
+use app\models\Client;
+use app\models\Landtype;
+use app\models\Area;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -66,30 +69,20 @@ class EstateController extends Controller
     {
         $model = new Estate();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            // Claculate estate's value
+            $model->calculateValue($model);
+
+            // Save and redirect
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $clients = Client::find()
-            ->select(['firstName'])
-            ->indexBy('id')
-            ->column();
-
-        $landTypes = Landtype::find()
-            ->select(['name'])
-            ->indexBy('id')
-            ->column();
-
-        $areas = Area::find()
-            ->select(['name'])
-            ->indexBy('id')
-            ->column();
-
         return $this->render('create', [
             'model' => $model,
-            'clients' => $clients,
-            'landTypes' => $landTypes,
-            'areas' => $areas
+            'clients' => Client::find()->select(['firstName'])->indexBy('id')->column(),
+            'landTypes' => Landtype::find()->select(['name'])->indexBy('id')->column(),
+            'areas' => Area::find()->select(['name'])->indexBy('id')->column()
         ]);
     }
 
@@ -104,12 +97,20 @@ class EstateController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            // Claculate estate's value
+            $model->calculateValue($model);
+
+            // Save and redirect
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'clients' => Client::find()->select(['firstName'])->indexBy('id')->column(),
+            'landTypes' => Landtype::find()->select(['name'])->indexBy('id')->column(),
+            'areas' => Area::find()->select(['name'])->indexBy('id')->column()
         ]);
     }
 

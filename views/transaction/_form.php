@@ -16,9 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'receiptNumber')->textInput() ?>
 
-    <?= $form->field($model, 'transaction_date')->textInput() ?>
-
-    <?= $form->field($model, 'client_id')->textInput() ?>
+    <?= $form->field($model, 'client_id')->dropdownList(
+    $clients,
+        ['prompt'=>'Select Client']
+    ) ?>
 
     <?= $form->field($model, 'charge_type_id')->textInput() ?>
 

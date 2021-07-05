@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'client.firstName',
             'client.lastName',
             'size',
+            'value', 
             'area.name',
             'landType.name',
             'notes',

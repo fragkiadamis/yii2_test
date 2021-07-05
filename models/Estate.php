@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property float $size
  * @property string|null $notes
+ * @property float $value
  * @property int $area_id
  * @property int $client_id
  * @property int $land_type_id
@@ -34,8 +35,8 @@ class Estate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['size', 'area_id', 'client_id', 'land_type_id'], 'required'],
-            [['size'], 'number'],
+            [['size', 'value', 'area_id', 'client_id', 'land_type_id'], 'required'],
+            [['size', 'value'], 'number'],
             [['area_id', 'client_id', 'land_type_id'], 'integer'],
             [['notes'], 'string', 'max' => 255],
             [['area_id'], 'exist', 'skipOnError' => true, 'targetClass' => Area::className(), 'targetAttribute' => ['area_id' => 'id']],
@@ -53,9 +54,10 @@ class Estate extends \yii\db\ActiveRecord
             'id' => 'ID',
             'size' => 'Size',
             'notes' => 'Notes',
-            'area_id' => 'Area',
-            'client_id' => 'Client',
-            'land_type_id' => 'Land Type',
+            'value' => 'Value',
+            'area_id' => 'Area ID',
+            'client_id' => 'Client ID',
+            'land_type_id' => 'Land Type ID',
         ];
     }
 
@@ -87,5 +89,11 @@ class Estate extends \yii\db\ActiveRecord
     public function getLandType()
     {
         return $this->hasOne(Landtype::className(), ['id' => 'land_type_id']);
+    }
+
+    public function calculateValue($model)
+    {
+        $multiplier = $model->getLandType($model->land_type_id)->select(['charge'])->column()[0];
+        $model->value = $model->size * $multiplier;
     }
 }

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ChargetypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Charge Types';
+$this->title = 'Charge Τypes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="chargetype-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Chargetype', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Charge Τype', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
             'notes',
             'amount',
